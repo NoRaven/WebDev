@@ -21,24 +21,72 @@
         flex-direction: column;
         justify-content: center;
     }
+
+    .Correct {
+        background-color: green;
+    }
     
   </style>
 </head>
 <body>
     <h1>Question</h1>
     <div class="question">
-        <div class="questionInner">
+        <div class="title">
             AAAAAA
             TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
-        </div>
-
-      
-        
+        </div>   
     </div>
     <h2>Answer</h2>
     <div class="answer">
-
+        <input type="text">
     </div>
+    <script>
+
+        let currentAnswer = ""
+        let questions = []
+
+        async function getQuestions(){
+            const response = await fetch("questions.json")
+            const data = await response.json()
+            questions = data
+            const randomIndex = Math.floor(data.length * Math.random())
+            const question = data[randomIndex]
+            renderQuestion(question)
+            
+        }
+
+        function renderRandomQuestion(){
+            const randomIndex = Math.floor(data.length * Math.random())
+            const question = data[randomIndex]
+            renderQuestion(question)
+        }
+
+        function renderQuestion(question){
+            const qdiv = document.querySelector(".question")
+            console.log(question)
+            currentAnswer = question.answer
+            qdiv.innerHTML = `
+            <div class="title">${question.title}</div>
+            `
+        }
+
+        getQuestions()
+
+        const input = document.querySelector(".answer input")
+        input.addEventListener("input" , check)
+
+        function check(){
+            console.log(input.value)
+            if(input.value.includes(currentAnswer)){
+                input.classList.add("Correct")
+                setTimeout(renderRandomQuestion, 200)
+            }
+            else {
+                input.classList.remove("Correct")
+            }
+        }
+
+    </script>
   
 </body>
 </html>
