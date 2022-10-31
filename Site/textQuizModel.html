@@ -25,6 +25,15 @@
     .Correct {
         background-color: green;
     }
+    .Normal{
+        background-color: white;
+    }
+    .Answer{
+        padding-left: 2.5vh;
+    }
+    .AnswerBox{
+        border: 2px solid black;
+    }
     
   </style>
 </head>
@@ -32,13 +41,12 @@
     <h1>Question</h1>
     <div class="question">
         <div class="title">
-            AAAAAA
-            TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+            aaaa
         </div>   
     </div>
     <h2>Answer</h2>
-    <div class="answer">
-        <input type="text">
+    <div class="Answer">
+        <input type="text" onfocus="this.value=''" class="AnswerBox">
     </div>
     <script>
 
@@ -55,11 +63,8 @@
             
         }
 
-        function renderRandomQuestion(){
-            const randomIndex = Math.floor(data.length * Math.random())
-            const question = data[randomIndex]
-            renderQuestion(question)
-        }
+        
+            
 
         function renderQuestion(question){
             const qdiv = document.querySelector(".question")
@@ -74,17 +79,38 @@
 
         const input = document.querySelector(".answer input")
         input.addEventListener("input" , check)
+        input.addEventListener("keydown" , checkForEnter)
+
 
         function check(){
             console.log(input.value)
             if(input.value.includes(currentAnswer)){
                 input.classList.add("Correct")
-                setTimeout(renderRandomQuestion, 200)
+                return true  
             }
             else {
                 input.classList.remove("Correct")
+                return false
             }
         }
+
+        function checkForEnter(event){
+            console.log(event.key)
+            if(event.key == "Enter")
+            {
+                if(check() == true)
+                {
+                    getQuestions()
+                    input.value = ""
+                }                
+                else
+                {
+                    input.value = ""
+                }
+                
+            }
+        }
+    
 
     </script>
   

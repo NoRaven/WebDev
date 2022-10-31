@@ -1,5 +1,7 @@
 [
     {"title" : "Wie gross ist die Gravitationskonstante auf der Erde?" , "answer" : "9.81"},
     {"title" : "Wie viele Dimensionen beinhaltet das uns bekannte Universum?" , "answer" : "4 Dimensionen"},
-    {"title" : "Wie viele Planeten gibt es in unserem Sonnensystem?" , "answer" : "8 Planeten"}
+    {"title" : "Wie viele Planeten gibt es in unserem Sonnensystem?" , "answer" : "8 Planeten"},
+    {"title" : "Was ist die Antwort auf alles?" , "answer" : "42"},
+    {"title" : "Welche Sprache wird am meisten auf dieser Welt gesprochen?" , "answer" : "Chinesisch"}
 ]
