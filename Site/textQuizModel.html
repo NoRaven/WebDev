@@ -30,9 +30,22 @@
     }
     .Answer{
         padding-left: 2.5vh;
+        
     }
     .AnswerBox{
         border: 2px solid black;
+        min-width: 15vh;
+        max-width: auto;
+        height: 3vh;
+    }
+    .conditions{
+        border: 2px solid black;
+        display: inline-block;
+        position: inherit;
+        width: 3vh;
+        height: 3vh;
+        margin-top: 0.5vh;
+        text-align: center;
     }
     
   </style>
@@ -45,9 +58,11 @@
         </div>   
     </div>
     <h2>Answer</h2>
-    <div class="Answer">
+    <div class="answer">
         <input type="text" onfocus="this.value=''" class="AnswerBox">
     </div>
+    <div class="conditions">Aa</div>
+    
     <script>
 
         let currentAnswer = ""
@@ -75,12 +90,11 @@
             `
         }
 
-        getQuestions()
+        getQuestions() 
 
         const input = document.querySelector(".answer input")
         input.addEventListener("input" , check)
         input.addEventListener("keydown" , checkForEnter)
-
 
         function check(){
             console.log(input.value)
@@ -93,6 +107,7 @@
                 return false
             }
         }
+        
 
         function checkForEnter(event){
             console.log(event.key)
